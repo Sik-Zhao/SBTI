@@ -11,14 +11,12 @@ export default function ResultView({ resultType }: { resultType: string }) {
   const [currentUrl, setCurrentUrl] = useState<string>('');
 
   useEffect(() => {
-    // 优先使用 Vercel 提供的生产环境变量，如果没有则回退到当前页面域名
-    // 注意：如果是 localhost 环境，扫码会报错，需要替换为真实的线上域名
-    const productionUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://sbti.vercel.app'; // <--- 你可以在这里写死你的最终线上域名
-    const url = typeof window !== 'undefined' && window.location.hostname !== 'localhost' 
-      ? window.location.origin 
-      : productionUrl;
-      
-    setCurrentUrl(url);
+    // 强制使用固定的生产环境变量，如果未配置则回退到你的 github pages 或默认值
+    const productionUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://sik-zhao.github.io/SBTI';
+    
+    // 我们不再根据 localhost 动态切换，因为这会导致截屏保存时二维码指向本地
+    // 直接强制使用真实的线上地址，确保任何人扫码都能跳转
+    setCurrentUrl(productionUrl);
   }, []);
 
   const handleDownload = async () => {
