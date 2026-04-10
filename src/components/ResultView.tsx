@@ -116,17 +116,19 @@ export default function ResultView({ resultType }: { resultType: string }) {
         </div>
 
         {/* 二维码区域 */}
-        {currentUrl && (
-          <div className="flex items-center justify-center w-full mt-2 pt-4 border-t border-gray-200 z-10">
-            <div className="flex flex-col items-start mr-4">
-              <p className="text-sm font-bold text-gray-800">长按保存专属海报</p>
-              <p className="text-xs text-gray-500">扫码测测你是个什么 SBTI</p>
-            </div>
-            <div className="p-1 bg-white rounded-lg shadow-sm border border-gray-100">
-              <QRCodeCanvas value={currentUrl} size={60} level="M" includeMargin={false} />
-            </div>
+        <div className="flex items-center justify-center w-full mt-2 pt-4 border-t border-gray-200 z-10">
+          <div className="flex flex-col items-start mr-4">
+            <p className="text-sm font-bold text-gray-800">长按保存专属海报</p>
+            <p className="text-xs text-gray-500">扫码测测你是个什么 SBTI</p>
           </div>
-        )}
+          <div className="p-1 bg-white rounded-lg shadow-sm border border-gray-100">
+            {currentUrl ? (
+              <QRCodeCanvas value={currentUrl} size={60} level="M" includeMargin={false} />
+            ) : (
+              <div className="w-[60px] h-[60px] bg-gray-200 animate-pulse rounded"></div>
+            )}
+          </div>
+        </div>
       </div>
 
       <div className="flex gap-4 mt-6 w-full max-w-md">
