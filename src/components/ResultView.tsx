@@ -11,8 +11,14 @@ export default function ResultView({ resultType }: { resultType: string }) {
   const [currentUrl, setCurrentUrl] = useState<string>('');
 
   useEffect(() => {
-    // 设置当前页面URL，用于二维码生成
-    setCurrentUrl(window.location.origin);
+    // 优先使用 Vercel 提供的生产环境变量，如果没有则回退到当前页面域名
+    // 注意：如果是 localhost 环境，扫码会报错，需要替换为真实的线上域名
+    const productionUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://sbti.vercel.app'; // <--- 你可以在这里写死你的最终线上域名
+    const url = typeof window !== 'undefined' && window.location.hostname !== 'localhost' 
+      ? window.location.origin 
+      : productionUrl;
+      
+    setCurrentUrl(url);
   }, []);
 
   const handleDownload = async () => {
