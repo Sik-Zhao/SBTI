@@ -2,7 +2,7 @@
 
 import { getResultData } from '@/data/results';
 import { useRef, useEffect, useState } from 'react';
-import html2canvas from 'html2canvas';
+import { domToPng } from 'modern-screenshot';
 import { QRCodeCanvas } from 'qrcode.react';
 
 export default function ResultView({ resultType }: { resultType: string }) {
@@ -18,16 +18,13 @@ export default function ResultView({ resultType }: { resultType: string }) {
   const handleDownload = async () => {
     if (resultRef.current) {
       try {
-        const canvas = await html2canvas(resultRef.current, {
+        const dataUrl = await domToPng(resultRef.current, {
           scale: 2,
-          useCORS: true,
           backgroundColor: '#f3f4f6',
-          logging: true,
-          allowTaint: false,
         });
-        const image = canvas.toDataURL('image/png');
+        
         const link = document.createElement('a');
-        link.href = image;
+        link.href = dataUrl;
         link.download = `SBTI_Result_${resultType}.png`;
         link.click();
       } catch (err) {
