@@ -111,8 +111,9 @@ export default function ResultView({ resultType }: { resultType: string }) {
         </div>
 
         {/* 占位广告位 */}
-        <div className="w-full h-16 bg-gray-200 border-2 border-dashed border-gray-300 rounded-lg flex items-center justify-center text-gray-400 text-xs z-10 mb-4">
-          广告位招租 (Ad Banner)
+        <div className="w-full h-16 bg-gray-200 border-2 border-dashed border-gray-300 rounded-lg flex flex-col items-center justify-center text-gray-400 text-xs z-10 mb-4">
+          <span className="font-bold mb-1">广告位招租 (Ad Banner)</span>
+          <span>绿泡泡：as5886658</span>
         </div>
 
         {/* 二维码区域 */}

@@ -85,8 +85,9 @@ export default function Home() {
           <p className="text-gray-500 mb-8">请稍候</p>
           
           {/* 插屏广告占位 */}
-          <div className="w-full max-w-sm h-64 bg-gray-200 border-2 border-dashed border-gray-400 rounded-xl flex items-center justify-center text-gray-500">
-            插屏/视频广告位招租
+          <div className="w-full max-w-sm h-64 bg-gray-200 border-2 border-dashed border-gray-400 rounded-xl flex flex-col items-center justify-center text-gray-500">
+            <p className="font-bold mb-2">插屏/视频广告位招租</p>
+            <p className="text-sm">绿泡泡：as5886658</p>
           </div>
         </div>
       )}
