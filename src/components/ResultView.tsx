@@ -11,8 +11,8 @@ export default function ResultView({ resultType }: { resultType: string }) {
   const [currentUrl, setCurrentUrl] = useState<string>('');
 
   useEffect(() => {
-    // 强制使用固定的生产环境变量，如果未配置则回退到你的 github pages 或默认值
-    const productionUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://sik-zhao.github.io/SBTI';
+    // 强制使用固定的生产环境变量，如果未配置则回退到你的国内域名
+    const productionUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://sbticom.shop';
     
     // 我们不再根据 localhost 动态切换，因为这会导致截屏保存时二维码指向本地
     // 直接强制使用真实的线上地址，确保任何人扫码都能跳转
